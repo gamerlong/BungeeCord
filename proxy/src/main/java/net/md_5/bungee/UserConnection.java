@@ -379,25 +379,25 @@ public final class UserConnection implements ProxiedPlayer
     @Override
     public void disconnect(BaseComponent... reason)
     {
-        disconnect0( reason );
+        disconnect0();
     }
 
     @Override
     public void disconnect(BaseComponent reason)
     {
-        disconnect0( reason );
+        disconnect0();
     }
 
     public void disconnect0(final BaseComponent... reason)
     {
         if ( !ch.isClosing() )
         {
-            bungee.getLogger().log( Level.INFO, "[{0}] disconnected with: {1}", new Object[]
+            bungee.getLogger().log( Level.INFO, "You have lost connection to the server", new Object[]
             {
-                getName(), BaseComponent.toLegacyText( reason )
+                getName(), BaseComponent.toLegacyText()
             } );
 
-            ch.close( new Kick( ComponentSerializer.toString( reason ) ) );
+            ch.close( new Kick( ComponentSerializer.toString() ) );
 
             if ( server != null )
             {
